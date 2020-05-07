@@ -1,9 +1,15 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const morgan = require('morgan');
+const bodyParser = require("body-parser");
+
 const app = express();
 
 // settings
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 app.set('port', 4000 || process.env.PORT);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.hbs', exphbs({
@@ -15,10 +21,14 @@ app.engine('.hbs', exphbs({
 app.set('view engine', '.hbs');
 
 // middlewares
+app.use(morgan('dev'));
 
-//routes
-app.use(require('./routes/index.routes'));
+// view routes
+app.use(require('./routes/views.routes'));
+// api routes 
+app.use(require('./routes/api.routes'))
 
 // static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
