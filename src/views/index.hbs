@@ -10,4 +10,19 @@
             <button class="btn btn-primary">SEND</button>
         </form>
     </div>
+    <div class="col-md-8">
+        {{#if messages}}
+
+        {{#each messages}}
+        <div class="car card-body">
+            <p>Meesage: {{body}}</p>
+            <span>from: {{from }}</span>
+            <span>to: {{to}}</span>
+        </div>
+        {{/each}}
+
+        {{else}}
+        <p>No messages yet</p>
+        {{/if}}
+    </div>
 </div>

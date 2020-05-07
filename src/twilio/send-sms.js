@@ -15,7 +15,7 @@ const sendMessage = async (body, phone) => {
             from: config.phone_test_twilio,
             body
         });
-        return message.sid
+        return message;
     } catch (error) {
         console.log(error)
     }
