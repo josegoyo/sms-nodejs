@@ -13,13 +13,17 @@
     <div class="col-md-8">
         {{#if messages}}
 
-        {{#each messages}}
-        <div class="car card-body">
-            <p>Meesage: {{body}}</p>
-            <span>from: {{from }}</span>
-            <span>to: {{to}}</span>
-        </div>
-        {{/each}}
+        <ul class="list-group" id="messages">
+            {{#each messages}}
+            <li class="list-group-item list-group-info list-group-item-action">
+                <p>Message: {{body}}</p>
+                <span>from: {{from }}</span>
+                <span>to: {{to}}</span><br>
+                <span>type: {{type}}</span><br>
+                <span>{{timeago createdAt}}</span>
+            </li>
+            {{/each}}
+        </ul>
 
         {{else}}
         <p>No messages yet</p>
