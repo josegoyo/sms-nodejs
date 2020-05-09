@@ -23,12 +23,10 @@ app.set('view engine', '.hbs');
 
 // middlewares
 app.use(morgan('dev'));
-
 // view routes
 app.use(require('./routes/views.routes'));
 // api routes 
 app.use(require('./routes/api.routes'))
-
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
 
